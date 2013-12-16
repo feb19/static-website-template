@@ -36,7 +36,7 @@ module.exports = function (grunt) {
     },
     shell: {
       styleguide: {
-        command: 'kss-node assets/scss styleguide --css assets/css/*.css'
+        command: 'mkdir styleguide && cat assets/css/*.css assets/styleguide/kss.css > styleguide/_kss.css && kss-node assets/scss styleguide --css styleguide/_kss.css'
       }
     },
     watch: {
@@ -57,5 +57,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-styleguide');
   grunt.loadNpmTasks('grunt-shell');
-  grunt.registerTask('default', ['bower:install', 'jshint', 'sass', 'shell']);
+  grunt.registerTask('default', ['clean', 'bower:install', 'jshint', 'sass', 'shell']);
 };

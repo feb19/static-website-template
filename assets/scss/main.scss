@@ -16,8 +16,8 @@ h1 {
 
 // Colors
 // 
-// c-1     - color1
-// c-2     - color2
+// c-1      - color1
+// c-2      - color2
 //
 // Markup:
 // <div class="{$modifiers}">red color</div>
@@ -27,13 +27,20 @@ h1 {
 .c-2 { color: blue !important; }
 
 // Margin
+//
+// m-z      - margin 0
+// m-t-z    - margin top 0
+// m-t-xxs  - margin top XXSmall
 // 
 // Markup:
-// <div style="width: 100px; height: 50px; background-color:black;">
-// <div class="{$modifiers}" style="background-color: red; width: 30px; height: 30px;">margin box</div>
+// <div style="width: 100px; height: 10px; background-color:black;"></div>
+// <div style="width: 100px; height: 50px; background-color:gray;">
+// <div class="{$modifiers}" style="background-color: red; width: 30px; height: 30px;">box</div>
 // </div>
+// <div style="width: 100px; height: 10px; background-color:black;"></div>
 //
 // Styleguide 1.3
+.m-z { margin-top: 0px !important; }
 .m-t-z { margin-top: 0px !important; }
 .m-t-xxs { margin-top: 3px !important; }
 .m-t-xs { margin-top: 6px !important; }
