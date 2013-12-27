@@ -18,6 +18,8 @@
     "grunt-styleguide": "~0.2.12",
     "grunt-shell": "~0.6.1",
     "grunt-contrib-clean": "~0.5.0",
-    "kss": "~0.3.6"
+    "kss": "~0.3.6",
+    "grunt-pngmin": "~0.6.1",
+    "grunt-compass": "~0.3.9"
   }
 }
