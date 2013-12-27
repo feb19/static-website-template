@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         },
         shell: {
             styleguide: {
-                command: 'mkdir styleguide && cat assets/css/*.css assets/styleguide/kss.css > styleguide/_kss.css && kss-node assets/scss styleguide --css styleguide/_kss.css'
+                command: 'mkdir styleguide; cat assets/css/*.css assets/styleguide/kss.css > styleguide/_kss.css; kss-node assets/scss styleguide --css styleguide/_kss.css'
             }
         },
         pngmin: {
