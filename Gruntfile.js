@@ -25,11 +25,12 @@ module.exports = function (grunt) {
                 node: true
             },
             files: {
-                src: [ 'Gruntfile.js' ]
+                src: [ 'Gruntfile.js', 'assets/js/*.js' ]
             }
         },
         clean: [
-            'styleguide'
+            'styleguide',
+            'release'
         ],
         sass: {
             compile: {
@@ -57,6 +58,13 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        cssmin: {
+            combine: {
+                files: {
+                    'release/css/style.min.css': ['assets/css/*.css']
+                }
+            }
+        },
         uglify: {
             my_target: {
                 files: {
@@ -64,14 +72,30 @@ module.exports = function (grunt) {
                 }
             }
         },
+        jade: {
+            release: {
+                options: {
+                    data: {
+                        debug: false
+                    }
+                },
+                files: {
+                    "release/index.html": "jade/*.jade"
+                }
+            }
+        },
         watch: {
+            jade: {
+                files: ['jade/*.jade'],
+                tasks: ['jade']
+            },
             sass: {
                 files: ['assets/scss/*.scss'],
-                tasks: ['sass']
+                tasks: ['sass', 'cssmin']
             },
-            shell: {
-                files: ['assets/scss/*.scss'],
-                tasks: ['clean', 'shell']
+            js: {
+                files: ['assets/js/*.js'],
+                tasks: ['uglify']
             }
         }
     });
@@ -84,5 +108,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-compass');
     grunt.loadNpmTasks('grunt-pngmin');
-    grunt.registerTask('default', ['clean', 'bower:install', 'jshint', 'sass', 'shell']);
+    grunt.loadNpmTasks('grunt-contrib-jade');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.registerTask('default', ['clean', 'bower:install', 'jshint', 'jade', 'sass', 'shell', 'cssmin', 'uglify']);
 };
